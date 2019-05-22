@@ -1,0 +1,63 @@
+% -----------------------------------------
+% idwall article style
+% -----------------------------------------
+
+% LANGUAGE
+% \usepackage[brazilian]{babel}
+% \usepackage[utf8x]{inputenc}
+
+% -----------------------------------------
+% FONTS
+\usepackage[sc]{mathpazo}
+\usepackage[T1]{fontenc}
+  \linespread{1.05} % spacing for using Palatino font
+\usepackage{microtype}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+% -----------------------------------------
+% VISUAL ELEMENTS
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{hyperref}
+\usepackage[dvipsnames,xcdraw,table]{xcolor}
+
+% -----------------------------------------
+% PAGE STYLE AND LAYOUT
+\usepackage[hmarginratio=1:1,%
+            top=25mm,bottom=40mm,%
+            right=20mm,left=20mm,%
+            columnsep=25pt]{geometry}
+\usepackage{fancyhdr}
+  \pagestyle{fancy}
+  \fancyhead[L]{}
+  \fancyhead[R]{\textit{Machine Learning, Stanford}}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0.2pt}
+
+% -----------------------------------------
+% SECTIONS
+% title
+\usepackage{titlesec}
+  % \renewcommand\thesection{\Roman{section}}
+  \renewcommand\thesubsection{\Roman{subsection}}
+  \titleformat{\chapter}[block]{\normalfont\Huge\bfseries}{\thechapter.}{1em}{\Huge}
+\titlespacing*{\chapter}{0pt}{-19pt}{0pt}
+  \titleformat{\section}[block]{\large\scshape\centering}{}{1em}{}
+  \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{}
+
+% caption
+\usepackage[hang,small,labelfont=bf,up,textfont=it,up]{caption}
+
+% -----------------------------------------
+% ENVIRONMENTS
+\usepackage{abstract}
+  \renewcommand{\abstractnamefont}{\normalfont\bfseries}
+  \renewcommand{\abstracttextfont}{\normalfont\small\itshape}
+
+% columns
+% \usepackage{multicol}
+%   \setlength{\columnseprule}{0.05pt}
+
+% tables
+\usepackage{booktabs}
