@@ -89,7 +89,10 @@
 
   \section{Prediction and Inference}
 
-  Definition of prediction and inference
+  \begin{itemize}
+    \item Prediction: you use variables to predict \textbf{values}
+    \item Inference: you use variables to understand behaviors, find structures, etc
+  \end{itemize}
 
   \subsection*{Prediction accuracy vs. Model interpretability}
 
@@ -105,6 +108,69 @@
   \label{}
 \end{figure}
 
+\section{Multivariate Linear Regression}
+
+Let
+\begin{equation}
+  \mathbf{x}=
+  \begin{bmatrix}
+    x_0 \\ x_1 \\ x_2 \\ \vdots \\ x_n
+  \end{bmatrix} \in \mathbb{R}^{n+1}
+  \quad \text{and} \quad
+  \theta=
+  \begin{bmatrix}
+    x_0 \\ x_1 \\ x_2 \\ \vdots \\ x_n
+  \end{bmatrix} \in \mathbb{R}^{n+1}
+\end{equation}
+
+then the Multivariate Linear Regression is defined by
+\begin{equation}
+  h_\theta(x)=\theta_0 x_0 + \theta_1 x_1 + \dots + \theta_n x_n = \theta^T \mathbf{x}
+\end{equation}
+
+\subsection*{Gradient descent}
+In the case $n\geq 1$ case, you should repeat:
+\begin{equation}
+  \theta_j := \theta_j - \alpha\frac{1}{m}\sum_{i=1}^m (h_\theta (x^{(i)})-y^{(i)})x_{j}^{(i)}
+\end{equation}
+
+There are some tricks to help the Gradient Descent converge more quickly:
+\begin{itemize}
+  \item Feature scaling
+    \subitem get every feature into approximately a $-1 \leq x \leq 1$ range
+    \subitem mean normalization: $\frac{x_i-\mu_i}{s_i}$ where $\mu_i$ is the mean of the $x_i$ and $s_i$ is the range.
+  \item Debugging: your $J(\theta)$ should descrease at every iteration. If it's increasing, or if it shows an "weird" behavior (like descreasing and increasing over and over) maybe you should use a smaller $\alpha$. But if $alpha$ is too small, gradient descent can be slow to converge.
+\end{itemize}
+
+\subsection*{Normal equation}
+It is a method to solve for $\theta$ "analytically". In this case, you don't need to use feature scaling.
+
+\begin{equation}
+  \theta=(X^T X)^{-1}X^T y
+\end{equation}
+
+Gradient descent
+\begin{itemize}
+  \item Need choose $\alpha$
+  \item Needs many itrations
+  \item Works well even when $n$ is large
+\end{itemize}
+
+Normal equation
+\begin{itemize}
+  \item No need to chosse $\alpha$
+  \item Don't need to iterate
+  \item Need to compute $(X^TX)^{-1}$
+  \item Slow if $n$ is very large (usually for $n\geq 10000$)
+\end{itemize}
+
+$X^TX$ could be non-invertible if
+\begin{itemize}
+  \item The features are linear dependente
+  \item You have too many features. You should delete some features or use regulatization.
+\end{itemize}
+
+\clearpage
 \begin{thebibliography}{99}
   \bibitem{gareth}
   Gareth James, Daniela Witten, Trevor Hastie and Robert Tibshirani,
